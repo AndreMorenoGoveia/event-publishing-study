@@ -82,3 +82,713 @@ Traceback (most recent call last):
 RuntimeError: Event loop is closed
 ERROR:asyncio:Task was destroyed but it is pending!
 task: <Task pending name='Task-959' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-66 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-66 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-1924' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-1925' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2855b840>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-1926' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-73 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-73 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-2866' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-2867' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f28468120>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-2868' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+[18:16:13]   R10 block 1/5 done
+Exception in thread Thread-109 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-109 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-3784' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-3785' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2846fe60>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-3786' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-116 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-116 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-4676' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-4677' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2846d7e0>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-4678' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-152 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-152 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-5550' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-5551' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2855af80>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-5552' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-159 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-159 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-6419' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-6420' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f284699a0>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-6421' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+[18:18:19]   R10 block 2/5 done
+Exception in thread Thread-195 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-195 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-7261' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-7262' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2855a960>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-7263' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-202 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-202 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-8186' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-8187' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f284b73e0>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-8188' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-238 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-238 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-9124' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-9125' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2846fca0>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-9126' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-245 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-245 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-9974' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-9975' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f28468740>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-9976' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+[18:20:25]   R10 block 3/5 done
+Exception in thread Thread-281 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-281 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-10829' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-10830' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2846f300>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-10831' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-288 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-288 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-11709' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-11710' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2846eb20>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-11711' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-324 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-324 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-12639' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-12640' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2846fae0>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-12641' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-331 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-331 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-13484' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-13485' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2846d700>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-13486' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+[18:22:31]   R10 block 4/5 done
+Exception in thread Thread-367 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-367 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-14321' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-14322' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f284b5b60>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-14323' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-374 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-374 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-15322' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-15323' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f284b6340>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-15324' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-410 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 334, in rt_fn
+    send(batch)
+    ~~~~^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-410 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-16318' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-16319' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f28468900>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-16320' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+Exception in thread Thread-417 (rt_fn):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 355, in rt_fn
+    send([(r[2], pack_env(uuid.UUID(r[1]), r[2], r[3], r[4], bytes(r[5]))) for r in rows])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1498/869737676.py", line 291, in send
+    lp.run_until_complete(asyncio.gather(*[js.publish(f"{dest}.{aid % 12}", b) for aid, b in items]))
+                          ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 893, in gather
+    fut = ensure_future(arg, loop=loop)
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 755, in ensure_future
+    loop = events.get_event_loop()
+  File "/usr/lib/python3.13/asyncio/events.py", line 719, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+                       % threading.current_thread().name)
+RuntimeError: There is no current event loop in thread 'Thread-417 (rt_fn)'.
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-17301' coro=<Client._read_loop() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2466> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-17302' coro=<Client._ping_interval() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2450> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Exception ignored in: <coroutine object Client._flusher at 0x780f2846c900>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/nats/aio/client.py", line 2430, in _flusher
+    future: asyncio.Future = await self._flush_queue.get()
+  File "/usr/lib/python3.13/asyncio/queues.py", line 188, in get
+    getter.cancel()  # Just in case getter is not done yet.
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 834, in call_soon
+    self._check_closed()
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 557, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-17303' coro=<Client._flusher() done, defined at /usr/local/lib/python3.13/dist-packages/nats/aio/client.py:2419> wait_for=<Future cancelled>>
+[18:24:37]   R10 block 5/5 done
+[18:24:37] === G18 Replay 5000 events ===
+[colab] Stopping session 'run-576b05'...
+[colab] Session terminated.

@@ -270,9 +270,13 @@ def main():
         ra = w2d_grp.get((rate, *ka))
         rb = w2d_grp.get((rate, *kb))
         if ra and rb:
-            va = [x["l_e2e_p99_ms"] for x in ra]
-            vb = [x["l_e2e_p99_ms"] for x in rb]
-            ratio, lo, hi, cls = paired_log_ratio_ci(va, vb)
+            va = [x["l_e2e_p99_ms"] for x in ra if x["l_e2e_p99_ms"] is not None]
+            vb = [x["l_e2e_p99_ms"] for x in rb if x["l_e2e_p99_ms"] is not None]
+            if not va or not vb:
+                continue
+            ratio, lo, hi, cls = paired_log_ratio_ci(
+                [x["l_e2e_p99_ms"] for x in ra], [x["l_e2e_p99_ms"] for x in rb]
+            )
             lines.append(f"| {lbl} | {rate} ev/s | {statistics.median(va):.1f} | {statistics.median(vb):.1f} | {ratio}× | [{lo}, {hi}] | `{cls}` |")
 
     lines += [
