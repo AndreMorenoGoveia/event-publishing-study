@@ -1,0 +1,94 @@
+
+[colab] A new version of Colab CLI is available: 0.8.0 (current: 0.7.5)
+[colab] Run 'colab update' to update.
+[colab] To silence this check, set "enable_update_check": false in ~/.config/colab-cli/settings.json
+
+===WAVE3B_JSON_START===
+{
+  "meta": {
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "cpus": 2,
+    "runtime_s": 470.0
+  },
+  "N09_pg_maintenance_bloat": [
+    {
+      "cleanup_mode": "mark_only",
+      "autovacuum": true,
+      "rows_processed": 30000,
+      "insert_batch50_p99_ms": 225.2,
+      "cleanup_5k_p99_ms": 152.88,
+      "final_table_size_mb": 51.89,
+      "dead_tuples": 5000,
+      "total_s": 95.48
+    },
+    {
+      "cleanup_mode": "delete_after_ack",
+      "autovacuum": true,
+      "rows_processed": 30000,
+      "insert_batch50_p99_ms": 204.67,
+      "cleanup_5k_p99_ms": 12.35,
+      "final_table_size_mb": 23.68,
+      "dead_tuples": 15000,
+      "total_s": 95.45
+    },
+    {
+      "cleanup_mode": "delete_after_ack",
+      "autovacuum": false,
+      "rows_processed": 30000,
+      "insert_batch50_p99_ms": 211.46,
+      "cleanup_5k_p99_ms": 11.94,
+      "final_table_size_mb": 34.84,
+      "dead_tuples": 25000,
+      "total_s": 95.49
+    },
+    {
+      "cleanup_mode": "partition_drop",
+      "autovacuum": true,
+      "rows_processed": 30000,
+      "insert_batch50_p99_ms": 221.78,
+      "cleanup_5k_p99_ms": 7.73,
+      "final_table_size_mb": 0.0,
+      "dead_tuples": 0,
+      "total_s": 95.42
+    }
+  ],
+  "A_S2_lambda_vs_ecs": [
+    {
+      "runtime_mode": "lambda_ephemeral_conn",
+      "rate_eps": 5,
+      "tx_p50_ms": 13.05,
+      "tx_p99_ms": 17.39
+    },
+    {
+      "runtime_mode": "lambda_ephemeral_conn",
+      "rate_eps": 25,
+      "tx_p50_ms": 13.27,
+      "tx_p99_ms": 19.14
+    },
+    {
+      "runtime_mode": "lambda_ephemeral_conn",
+      "rate_eps": 50,
+      "tx_p50_ms": 19.16,
+      "tx_p99_ms": 29.15
+    },
+    {
+      "runtime_mode": "ecs_persistent_pool",
+      "rate_eps": 5,
+      "tx_p50_ms": 4.63,
+      "tx_p99_ms": 37.49
+    },
+    {
+      "runtime_mode": "ecs_persistent_pool",
+      "rate_eps": 25,
+      "tx_p50_ms": 4.04,
+      "tx_p99_ms": 6.34
+    },
+    {
+      "runtime_mode": "ecs_persistent_pool",
+      "rate_eps": 50,
+      "tx_p50_ms": 4.09,
+      "tx_p99_ms": 7.59
+    }
+  ]
+}
+===WAVE3B_JSON_END===

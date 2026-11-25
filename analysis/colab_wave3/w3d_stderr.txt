@@ -1,0 +1,23 @@
+[colab] Creating session 'run-896638'...
+[colab] Session READY (run-896638). Executing experiments/colab_wave3/run_redpanda_and_factorial.py...
+[17:54:52] Wave 3D bootstrap done in 107.0s
+[17:55:07]   N12 r=100 p=10 b=10 k=1 cln=mark: e2e_p99=1038.21ms O1=0
+[17:55:23]   N12 r=100 p=200 b=10 k=1 cln=delete: e2e_p99=929.97ms O1=0
+[17:55:38]   N12 r=100 p=10 b=200 k=1 cln=delete: e2e_p99=928.84ms O1=0
+[17:55:53]   N12 r=100 p=200 b=200 k=1 cln=mark: e2e_p99=929.43ms O1=0
+[17:56:08]   N12 r=100 p=10 b=10 k=2 cln=delete: e2e_p99=930.26ms O1=0
+[17:56:23]   N12 r=100 p=200 b=10 k=2 cln=mark: e2e_p99=927.07ms O1=0
+[17:56:38]   N12 r=100 p=10 b=200 k=2 cln=mark: e2e_p99=924.44ms O1=0
+[17:56:53]   N12 r=100 p=200 b=200 k=2 cln=delete: e2e_p99=926.02ms O1=0
+[17:56:53]   N12 Main Effects (ratio hi/lo) @ 100 ev/s: {'A_poll': 0.973, 'B_batch': 0.971, 'C_relays': 0.97, 'D_cleanup': 0.974}
+[17:57:09]   N12 r=600 p=10 b=10 k=1 cln=mark: e2e_p99=924.64ms O1=0
+[17:57:24]   N12 r=600 p=200 b=10 k=1 cln=delete: e2e_p99=927.53ms O1=0
+[17:57:39]   N12 r=600 p=10 b=200 k=1 cln=delete: e2e_p99=930.7ms O1=0
+[17:57:54]   N12 r=600 p=200 b=200 k=1 cln=mark: e2e_p99=925.09ms O1=0
+[17:58:09]   N12 r=600 p=10 b=10 k=2 cln=delete: e2e_p99=924.45ms O1=0
+[17:58:24]   N12 r=600 p=200 b=10 k=2 cln=mark: e2e_p99=923.61ms O1=0
+[17:58:39]   N12 r=600 p=10 b=200 k=2 cln=mark: e2e_p99=926.44ms O1=1
+[17:58:55]   N12 r=600 p=200 b=200 k=2 cln=delete: e2e_p99=924.85ms O1=0
+[17:58:55]   N12 Main Effects (ratio hi/lo) @ 600 ev/s: {'A_poll': 0.999, 'B_batch': 1.002, 'C_relays': 0.998, 'D_cleanup': 1.002}
+[colab] Stopping session 'run-896638'...
+[colab] Session terminated.

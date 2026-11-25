@@ -1,0 +1,54 @@
+[colab] Creating session 'run-1698e9'...
+[colab] Session READY (run-1698e9). Executing experiments/colab_campaign/run_kafka_clean.py...
+[16:39:50] Bootstrap done (PG + Kafka with group.initial.rebalance.delay.ms=0)
+[16:39:56] C1 clean Kafka: {'versions_delivered': [1, 2], 'zombie_fenced_by_broker': True, 'broker_error': 'KafkaError{FATAL,code=_FENCED,val=-144,str="Failed to add partitions to transaction: Local: This instance has been fenced by a newer instance"}', 'o1_inversions': 0}
+[16:40:02]   b=1 rate=25 kafka/outbox-poll(p=10): e2e_p50=17.094ms e2e_p99=271.681ms req_p99=9.663ms cens=0
+[16:40:07]   b=1 rate=25 kafka/outbox-poll(p=100): e2e_p50=61.451ms e2e_p99=199.038ms req_p99=9.614ms cens=0
+[16:40:13]   b=1 rate=25 kafka/outbox-notify(p=0): e2e_p50=11.731ms e2e_p99=252.946ms req_p99=12.634ms cens=0
+[16:40:18]   b=1 rate=25 kafka/outbox-cdc(p=0): e2e_p50=10.501ms e2e_p99=178.74ms req_p99=172.487ms cens=0
+[16:40:23]   b=1 rate=100 kafka/outbox-poll(p=10): e2e_p50=15.818ms e2e_p99=24.365ms req_p99=9.993ms cens=0
+[16:40:29]   b=1 rate=100 kafka/outbox-poll(p=100): e2e_p50=60.091ms e2e_p99=311.815ms req_p99=7.885ms cens=0
+[16:40:34]   b=1 rate=100 kafka/outbox-notify(p=0): e2e_p50=10.02ms e2e_p99=59.086ms req_p99=17.277ms cens=0
+[16:40:40]   b=1 rate=100 kafka/outbox-cdc(p=0): e2e_p50=9.591ms e2e_p99=22.306ms req_p99=13.6ms cens=0
+[16:40:45]   b=1 rate=300 kafka/outbox-poll(p=10): e2e_p50=13.833ms e2e_p99=258.66ms req_p99=14.134ms cens=0
+[16:40:50]   b=1 rate=300 kafka/outbox-poll(p=100): e2e_p50=12.853ms e2e_p99=66.326ms req_p99=9.664ms cens=0
+[16:40:56]   b=1 rate=300 kafka/outbox-notify(p=0): e2e_p50=234.008ms e2e_p99=623.612ms req_p99=618.417ms cens=0
+[16:41:02]   b=1 rate=300 kafka/outbox-cdc(p=0): e2e_p50=8.533ms e2e_p99=12.876ms req_p99=8.07ms cens=0
+[16:41:07]   b=1 rate=600 kafka/outbox-poll(p=10): e2e_p50=12.897ms e2e_p99=76.466ms req_p99=57.493ms cens=0
+[16:41:13]   b=1 rate=600 kafka/outbox-poll(p=100): e2e_p50=12.982ms e2e_p99=42.203ms req_p99=28.84ms cens=0
+[16:41:24]   b=1 rate=600 kafka/outbox-notify(p=0): e2e_p50=3213.578ms e2e_p99=6199.094ms req_p99=6193.007ms cens=0
+[16:41:30]   b=1 rate=600 kafka/outbox-cdc(p=0): e2e_p50=9.322ms e2e_p99=18.602ms req_p99=13.704ms cens=0
+[16:41:35]   b=2 rate=25 kafka/outbox-poll(p=10): e2e_p50=14.939ms e2e_p99=22.275ms req_p99=10.232ms cens=0
+[16:41:40]   b=2 rate=25 kafka/outbox-poll(p=100): e2e_p50=52.388ms e2e_p99=105.328ms req_p99=10.344ms cens=0
+[16:41:46]   b=2 rate=25 kafka/outbox-notify(p=0): e2e_p50=10.261ms e2e_p99=14.68ms req_p99=8.038ms cens=0
+[16:41:51]   b=2 rate=25 kafka/outbox-cdc(p=0): e2e_p50=9.697ms e2e_p99=13.433ms req_p99=8.547ms cens=0
+[16:41:56]   b=2 rate=100 kafka/outbox-poll(p=10): e2e_p50=14.003ms e2e_p99=21.727ms req_p99=7.263ms cens=0
+[16:42:02]   b=2 rate=100 kafka/outbox-poll(p=100): e2e_p50=57.035ms e2e_p99=111.567ms req_p99=12.846ms cens=0
+[16:42:07]   b=2 rate=100 kafka/outbox-notify(p=0): e2e_p50=9.149ms e2e_p99=13.123ms req_p99=6.889ms cens=0
+[16:42:13]   b=2 rate=100 kafka/outbox-cdc(p=0): e2e_p50=8.612ms e2e_p99=12.402ms req_p99=6.903ms cens=0
+[16:42:18]   b=2 rate=300 kafka/outbox-poll(p=10): e2e_p50=11.494ms e2e_p99=18.624ms req_p99=8.588ms cens=0
+[16:42:23]   b=2 rate=300 kafka/outbox-poll(p=100): e2e_p50=11.385ms e2e_p99=64.4ms req_p99=8.876ms cens=0
+[16:42:29]   b=2 rate=300 kafka/outbox-notify(p=0): e2e_p50=347.679ms e2e_p99=569.924ms req_p99=563.578ms cens=0
+[16:42:35]   b=2 rate=300 kafka/outbox-cdc(p=0): e2e_p50=8.467ms e2e_p99=12.956ms req_p99=7.746ms cens=0
+[16:42:40]   b=2 rate=600 kafka/outbox-poll(p=10): e2e_p50=12.422ms e2e_p99=37.942ms req_p99=33.308ms cens=0
+[16:42:45]   b=2 rate=600 kafka/outbox-poll(p=100): e2e_p50=12.468ms e2e_p99=27.6ms req_p99=13.309ms cens=0
+[16:42:57]   b=2 rate=600 kafka/outbox-notify(p=0): e2e_p50=2918.709ms e2e_p99=6189.604ms req_p99=6183.434ms cens=0
+[16:43:02]   b=2 rate=600 kafka/outbox-cdc(p=0): e2e_p50=9.131ms e2e_p99=17.726ms req_p99=13.046ms cens=0
+[16:43:08]   b=3 rate=25 kafka/outbox-poll(p=10): e2e_p50=14.464ms e2e_p99=51.154ms req_p99=9.19ms cens=0
+[16:43:13]   b=3 rate=25 kafka/outbox-poll(p=100): e2e_p50=56.73ms e2e_p99=108.25ms req_p99=10.358ms cens=0
+[16:43:19]   b=3 rate=25 kafka/outbox-notify(p=0): e2e_p50=9.993ms e2e_p99=14.794ms req_p99=8.778ms cens=0
+[16:43:24]   b=3 rate=25 kafka/outbox-cdc(p=0): e2e_p50=9.224ms e2e_p99=18.691ms req_p99=10.452ms cens=0
+[16:43:29]   b=3 rate=100 kafka/outbox-poll(p=10): e2e_p50=13.723ms e2e_p99=21.091ms req_p99=6.951ms cens=0
+[16:43:35]   b=3 rate=100 kafka/outbox-poll(p=100): e2e_p50=57.904ms e2e_p99=110.922ms req_p99=10.815ms cens=0
+[16:43:40]   b=3 rate=100 kafka/outbox-notify(p=0): e2e_p50=8.687ms e2e_p99=12.756ms req_p99=6.546ms cens=0
+[16:43:46]   b=3 rate=100 kafka/outbox-cdc(p=0): e2e_p50=8.669ms e2e_p99=13.172ms req_p99=7.362ms cens=0
+[16:43:51]   b=3 rate=300 kafka/outbox-poll(p=10): e2e_p50=10.993ms e2e_p99=17.367ms req_p99=7.712ms cens=0
+[16:43:56]   b=3 rate=300 kafka/outbox-poll(p=100): e2e_p50=11.78ms e2e_p99=104.28ms req_p99=8.391ms cens=0
+[16:44:02]   b=3 rate=300 kafka/outbox-notify(p=0): e2e_p50=56.372ms e2e_p99=119.994ms req_p99=112.003ms cens=0
+[16:44:07]   b=3 rate=300 kafka/outbox-cdc(p=0): e2e_p50=8.217ms e2e_p99=12.205ms req_p99=6.667ms cens=0
+[16:44:12]   b=3 rate=600 kafka/outbox-poll(p=10): e2e_p50=11.733ms e2e_p99=47.274ms req_p99=39.09ms cens=0
+[16:44:18]   b=3 rate=600 kafka/outbox-poll(p=100): e2e_p50=12.029ms e2e_p99=23.339ms req_p99=11.413ms cens=0
+[16:44:29]   b=3 rate=600 kafka/outbox-notify(p=0): e2e_p50=2736.954ms e2e_p99=5800.438ms req_p99=5795.823ms cens=0
+[16:44:34]   b=3 rate=600 kafka/outbox-cdc(p=0): e2e_p50=9.3ms e2e_p99=17.659ms req_p99=12.967ms cens=0
+[colab] Stopping session 'run-1698e9'...
+[colab] Session terminated.

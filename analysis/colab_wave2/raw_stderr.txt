@@ -1,0 +1,125 @@
+[colab] Creating session 'run-f0f396'...
+[colab] Session READY (run-f0f396). Executing experiments/colab_wave2/run_wave2.py...
+[17:30:33] Installing PG16, Kafka 3.9, NATS JetStream, RabbitMQ, Redis, Python clients...
+[17:34:14] Bootstrap completed in 221.4s (PG 16, Kafka 3.9, NATS JS fast+fsync, RabbitMQ, Redis, CPUs=8, RAM=51.0 GiB)
+[17:34:15] === W2-A: Sealed Predictive Validation (12 unseen configs V01-V12, R=2) ===
+[17:34:28]   V01 kafka/outbox-poll r=50 p=25: obs p99=[548.81, 43.57]
+[17:34:37]   V02 kafka/outbox-poll r=50 p=250: obs p99=[262.23, 263.68]
+[17:34:46]   V03 kafka/outbox-poll r=150 p=250: obs p99=[266.25, 322.84]
+[17:34:55]   V04 kafka/outbox-poll r=450 p=250: obs p99=[76.83, 94.65]
+[17:35:05]   V05 kafka/outbox-poll r=900 p=100: obs p99=[373.7, 298.74]
+[17:35:14]   V06 kafka/outbox-cdc r=450 p=None: obs p99=[42.65, 17.37]
+[17:35:24]   V07 kafka/outbox-cdc r=900 p=None: obs p99=[481.05, 585.27]
+[17:35:33]   V08 redis/outbox-poll r=50 p=250: obs p99=[267.61, 266.76]
+[17:35:41]   V09 redis/outbox-poll r=450 p=25: obs p99=[80.68, 67.66]
+[17:35:54]   V10 redis/outbox-poll r=900 p=25: obs p99=[2131.67, 1652.15]
+/tmp/ipykernel_1398/4155656899.py:216: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1398/4155656899.py:387: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1398/4155656899.py:257: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  self.conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[17:36:03]   V11 rabbitmq/outbox-poll r=50 p=250: obs p99=[261.17, 258.6]
+[17:36:11]   V12 rabbitmq/outbox-cdc r=50 p=None: obs p99=[15.25, 14.89]
+[17:36:11] === W2-B: Kafka High-Rate Frontier (500 -> 3000 ev/s, finding lambda*) ===
+[17:36:16]   W2-B rate=500 kafka/outbox-poll(p=10): e2e_p50=12.11ms e2e_p99=21.82ms cens=0
+[17:36:21]   W2-B rate=500 kafka/outbox-poll(p=100): e2e_p50=12.44ms e2e_p99=23.66ms cens=0
+[17:36:26]   W2-B rate=500 kafka/outbox-cdc(p=0): e2e_p50=8.93ms e2e_p99=25.27ms cens=0
+[17:36:31]   W2-B rate=1000 kafka/outbox-poll(p=10): e2e_p50=15.32ms e2e_p99=107.48ms cens=0
+[17:36:36]   W2-B rate=1000 kafka/outbox-poll(p=100): e2e_p50=16.67ms e2e_p99=53.46ms cens=0
+[17:36:41]   W2-B rate=1000 kafka/outbox-cdc(p=0): e2e_p50=171.09ms e2e_p99=280.93ms cens=0
+[17:36:48]   W2-B rate=1500 kafka/outbox-poll(p=10): e2e_p50=1298.6ms e2e_p99=2344.39ms cens=0
+[17:36:56]   W2-B rate=1500 kafka/outbox-poll(p=100): e2e_p50=1291.77ms e2e_p99=2337.7ms cens=0
+[17:37:03]   W2-B rate=1500 kafka/outbox-cdc(p=0): e2e_p50=1351.1ms e2e_p99=2433.37ms cens=0
+[17:37:13]   W2-B rate=2200 kafka/outbox-poll(p=10): e2e_p50=2663.71ms e2e_p99=4883.18ms cens=0
+[17:37:23]   W2-B rate=2200 kafka/outbox-poll(p=100): e2e_p50=2713.12ms e2e_p99=5385.75ms cens=0
+[17:37:34]   W2-B rate=2200 kafka/outbox-cdc(p=0): e2e_p50=3008.07ms e2e_p99=5631.01ms cens=0
+[17:37:47]   W2-B rate=3000 kafka/outbox-poll(p=10): e2e_p50=4594.19ms e2e_p99=8697.26ms cens=0
+[17:38:01]   W2-B rate=3000 kafka/outbox-poll(p=100): e2e_p50=4678.01ms e2e_p99=8541.93ms cens=0
+[17:38:15]   W2-B rate=3000 kafka/outbox-cdc(p=0): e2e_p50=4880.71ms e2e_p99=8955.51ms cens=0
+[17:38:15] === W2-C: Ablation A3 fsync on SAME system (Kafka & NATS JetStream) ===
+[17:38:19]   W2-C rate=100 kafka: e2e_p50=14.24ms e2e_p99=21.47ms cens=0
+[17:38:23]   W2-C rate=100 kafka-fsync: e2e_p50=27.95ms e2e_p99=67.37ms cens=0
+[17:38:28]   W2-C rate=100 nats: e2e_p50=12.53ms e2e_p99=19.71ms cens=0
+[17:38:32]   W2-C rate=100 nats-fsync: e2e_p50=22.07ms e2e_p99=36.56ms cens=0
+[17:38:37]   W2-C rate=500 kafka: e2e_p50=12.51ms e2e_p99=23.89ms cens=0
+[17:38:41]   W2-C rate=500 kafka-fsync: e2e_p50=157.25ms e2e_p99=299.79ms cens=0
+[17:38:45]   W2-C rate=500 nats: e2e_p50=11.32ms e2e_p99=21.51ms cens=0
+[17:38:54]   W2-C rate=500 nats-fsync: e2e_p50=3559.5ms e2e_p99=5525.16ms cens=553
+[17:38:59]   W2-C rate=1000 kafka: e2e_p50=221.6ms e2e_p99=502.94ms cens=0
+[17:39:06]   W2-C rate=1000 kafka-fsync: e2e_p50=1305.03ms e2e_p99=2099.25ms cens=0
+[17:39:11]   W2-C rate=1000 nats: e2e_p50=594.92ms e2e_p99=1182.37ms cens=0
+[17:39:22]   W2-C rate=1000 nats-fsync: e2e_p50=4925.24ms e2e_p99=8227.79ms cens=2334
+[17:39:22] === W2-D: R=10 Paired Blocks at 100 & 300 ev/s ===
+[17:40:15]   W2-D block 1/10 done
+[17:41:08]   W2-D block 2/10 done
+[17:42:02]   W2-D block 3/10 done
+[17:42:55]   W2-D block 4/10 done
+[17:43:48]   W2-D block 5/10 done
+[17:44:41]   W2-D block 6/10 done
+[17:45:35]   W2-D block 7/10 done
+[17:46:28]   W2-D block 8/10 done
+[17:47:21]   W2-D block 9/10 done
+[17:48:14]   W2-D block 10/10 done
+[17:48:14] === W2-E: G04 Payload Size (1, 8, 32, 64 KiB @ 100 ev/s) ===
+[17:48:19]   G04 kafka 1KiB: e2e_p99=21.22ms cens=0
+[17:48:23]   G04 nats 1KiB: e2e_p99=18.97ms cens=0
+[17:48:27]   G04 redis 1KiB: e2e_p99=43.33ms cens=0
+[17:48:32]   G04 rabbitmq 1KiB: e2e_p99=28.04ms cens=0
+[17:48:36]   G04 kafka 8KiB: e2e_p99=22.1ms cens=0
+[17:48:40]   G04 nats 8KiB: e2e_p99=19.59ms cens=0
+[17:48:44]   G04 redis 8KiB: e2e_p99=49.09ms cens=0
+[17:48:49]   G04 rabbitmq 8KiB: e2e_p99=28.52ms cens=0
+[17:48:53]   G04 kafka 32KiB: e2e_p99=22.24ms cens=0
+[17:48:57]   G04 nats 32KiB: e2e_p99=20.8ms cens=0
+[17:49:01]   G04 redis 32KiB: e2e_p99=62.94ms cens=0
+[17:49:06]   G04 rabbitmq 32KiB: e2e_p99=44.0ms cens=0
+[17:49:10]   G04 kafka 64KiB: e2e_p99=24.83ms cens=0
+[17:49:14]   G04 nats 64KiB: e2e_p99=23.75ms cens=0
+[17:49:18]   G04 redis 64KiB: e2e_p99=129.36ms cens=0
+[17:49:23]   G04 rabbitmq 64KiB: e2e_p99=84.78ms cens=0
+[17:49:23] === W2-E: G08 Fan-out (1, 2, 4 consumer groups @ 300 ev/s) ===
+[17:49:27]   G08 kafka groups=1: e2e_p99=17.99ms cens=0
+[17:49:31]   G08 nats groups=1: e2e_p99=18.86ms cens=0
+[17:49:36]   G08 kafka groups=2: e2e_p99=19.73ms cens=0
+[17:49:40]   G08 nats groups=2: e2e_p99=20.56ms cens=0
+[17:49:44]   G08 kafka groups=4: e2e_p99=99.2ms cens=0
+[17:49:48]   G08 nats groups=4: e2e_p99=36.29ms cens=0
+[17:49:48] === W2-E G18: Replay 5000 retained events (Kafka vs NATS JetStream vs Redis Streams) ===
+[0;31m---------------------------------------------------------------------------[0m[0;31mRuntimeError[0m                              Traceback (most recent call last)[0;32m/tmp/ipykernel_1398/4155656899.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m    851[0m [0;34m[0m[0m
+[1;32m    852[0m [0;32mif[0m [0m__name__[0m [0;34m==[0m [0;34m"__main__"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 853[0;31m     [0mmain[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m/tmp/ipykernel_1398/4155656899.py[0m in [0;36mmain[0;34m()[0m
+[1;32m    841[0m     [0mout[0m[0;34m[[0m[0;34m"W2_E_G08_fanout"[0m[0;34m][0m [0;34m=[0m [0mg08[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    842[0m [0;34m[0m[0m
+[0;32m--> 843[0;31m     [0mout[0m[0;34m[[0m[0;34m"W2_E_G18_replay"[0m[0;34m][0m [0;34m=[0m [0mrun_g18_replay[0m[0;34m([0m[0;36m5000[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    844[0m [0;34m[0m[0m
+[1;32m    845[0m     [0mout[0m[0;34m[[0m[0;34m"meta"[0m[0;34m][0m[0;34m[[0m[0;34m"total_runtime_s"[0m[0;34m][0m [0;34m=[0m [0mround[0m[0;34m([0m[0mtime[0m[0;34m.[0m[0mtime[0m[0;34m([0m[0;34m)[0m [0;34m-[0m [0mt_all[0m[0;34m,[0m [0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipykernel_1398/4155656899.py[0m in [0;36mrun_g18_replay[0;34m(n_events)[0m
+[1;32m    685[0m     [0mstream[0m [0;34m=[0m [0;34m"g18_replay_nats"[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    686[0m     [0mprepare_dest[0m[0;34m([0m[0;34m"nats"[0m[0;34m,[0m [0mstream[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 687[0;31m     [0mpub[0m [0;34m=[0m [0mUnifiedPublisher[0m[0;34m([0m[0;34m"nats"[0m[0;34m,[0m [0mstream[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    688[0m     [0;32mfor[0m [0moff[0m [0;32min[0m [0mrange[0m[0;34m([0m[0;36m0[0m[0;34m,[0m [0mn_events[0m[0;34m,[0m [0;36m250[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    689[0m         [0mpub[0m[0;34m.[0m[0mpublish_batch[0m[0;34m([0m[0mitems[0m[0;34m[[0m[0moff[0m[0;34m:[0m[0moff[0m [0;34m+[0m [0;36m250[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipykernel_1398/4155656899.py[0m in [0;36m__init__[0;34m(self, transport, dest)[0m
+[1;32m    266[0m             [0mself[0m[0;34m.[0m[0mport[0m [0;34m=[0m [0;36m4223[0m [0;32mif[0m [0mtransport[0m [0;34m==[0m [0;34m"nats-fsync"[0m [0;32melse[0m [0;36m4222[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    267[0m             [0mself[0m[0;34m.[0m[0mloop[0m [0;34m=[0m [0masyncio[0m[0;34m.[0m[0mnew_event_loop[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 268[0;31m             [0mself[0m[0;34m.[0m[0mnc[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mloop[0m[0;34m.[0m[0mrun_until_complete[0m[0;34m([0m[0mnats[0m[0;34m.[0m[0mconnect[0m[0;34m([0m[0;34mf"nats://127.0.0.1:{self.port}"[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    269[0m             [0mself[0m[0;34m.[0m[0mjs[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mnc[0m[0;34m.[0m[0mjetstream[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    270[0m [0;34m[0m[0m
+[0;32m/usr/lib/python3.13/asyncio/base_events.py[0m in [0;36mrun_until_complete[0;34m(self, future)[0m
+[1;32m    700[0m         """
+[1;32m    701[0m         [0mself[0m[0;34m.[0m[0m_check_closed[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 702[0;31m         [0mself[0m[0;34m.[0m[0m_check_running[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    703[0m [0;34m[0m[0m
+[1;32m    704[0m         [0mnew_task[0m [0;34m=[0m [0;32mnot[0m [0mfutures[0m[0;34m.[0m[0misfuture[0m[0;34m([0m[0mfuture[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/usr/lib/python3.13/asyncio/base_events.py[0m in [0;36m_check_running[0;34m(self)[0m
+[1;32m    638[0m             [0;32mraise[0m [0mRuntimeError[0m[0;34m([0m[0;34m'This event loop is already running'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    639[0m         [0;32mif[0m [0mevents[0m[0;34m.[0m[0m_get_running_loop[0m[0;34m([0m[0;34m)[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 640[0;31m             raise RuntimeError(
+[0m[1;32m    641[0m                 'Cannot run the event loop while another loop is running')
+[1;32m    642[0m [0;34m[0m[0m
+[0;31mRuntimeError[0m: Cannot run the event loop while another loop is running
+[colab] Stopping session 'run-f0f396'...
+[colab] Session terminated.

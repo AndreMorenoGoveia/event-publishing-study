@@ -1,0 +1,17 @@
+[colab] Creating session 'run-ba87a8'...
+[colab] Session READY (run-ba87a8). Executing experiments/colab_wave3/run_pg_maintenance_and_lambda.py...
+[17:39:38] Wave 3B bootstrap done in 64.0s
+[17:39:38] === N09: PostgreSQL Maintenance & Bloat (mark vs delete vs partition-drop) ===
+[17:41:14]   N09 mark_only autovac=True: size=51.89MB dead=5000 cleanup_p99=152.88ms
+[17:42:49]   N09 delete_after_ack autovac=True: size=23.68MB dead=15000 cleanup_p99=12.35ms
+[17:44:25]   N09 delete_after_ack autovac=False: size=34.84MB dead=25000 cleanup_p99=11.94ms
+[17:46:01]   N09 partition_drop autovac=True: size=0.0MB dead=0 cleanup_p99=7.73ms
+[17:46:01] === A-S2: Small Company (Lambda ephemeral conn vs ECS persistent pool) ===
+[17:46:04]   A-S2 lambda_ephemeral_conn  rate= 5: p50=13.05ms p99=17.39ms
+[17:46:08]   A-S2 lambda_ephemeral_conn  rate=25: p50=13.27ms p99=19.14ms
+[17:46:13]   A-S2 lambda_ephemeral_conn  rate=50: p50=19.16ms p99=29.15ms
+[17:46:16]   A-S2 ecs_persistent_pool    rate= 5: p50=4.63ms p99=37.49ms
+[17:46:20]   A-S2 ecs_persistent_pool    rate=25: p50=4.04ms p99=6.34ms
+[17:46:24]   A-S2 ecs_persistent_pool    rate=50: p50=4.09ms p99=7.59ms
+[colab] Stopping session 'run-ba87a8'...
+[colab] Session terminated.

@@ -1,0 +1,23 @@
+[colab] Creating session 'run-43e56d'...
+[colab] Session READY (run-43e56d). Executing experiments/colab_wave3/run_resilience_backlog_burst.py...
+[17:54:56] Wave 3C bootstrap done in 120.0s
+[17:54:56] === G11: 5x Burst (100 -> 500 -> 100 ev/s) ===
+/tmp/ipykernel_2074/601910980.py:275: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  cn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_2074/601910980.py:286: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  c2 = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[17:55:52] G11 done: {'kafka': {'pre': 1179.33, 'burst': 10.11, 'post': 9.13}, 'nats_jetstream': {'pre': 3.59, 'burst': 2.53, 'post': 3.44}, 'redis_streams': {'pre': 206.67, 'burst': 62.86, 'post': 208.19}, 'rabbitmq': {'pre': 13.01, 'burst': 7874.09, 'post': 7943.67}}
+[17:55:52] === G12: Backlog Drain (5000 events) ===
+/tmp/ipykernel_2074/601910980.py:330: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  cn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[17:55:58] G12 done: {'rabbitmq': {'events': 5000, 'drain_s': 2.426, 'drain_eps': 2060.8}, 'kafka': {'events': 5000, 'drain_s': 0.085, 'drain_eps': 59129.6}, 'redis_streams': {'events': 5000, 'drain_s': 0.218, 'drain_eps': 22953.2}, 'nats_jetstream': {'events': 5000, 'drain_s': 0.178, 'drain_eps': 28136.6}}
+[17:55:58] === G15: Network Delay Amplification (+0, +10, +30 ms RTT) ===
+/tmp/ipykernel_2074/601910980.py:497: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  cn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1", port=q_port))
+[17:56:00]   G15 rtt=+0ms: {'injected_rtt_ms': 0, 'redis_single_p50_ms': 6.56, 'redis_batch20_p50_ms': 48.07, 'rabbitmq_confirm_p50_ms': 7.22}
+[17:56:02]   G15 rtt=+10ms: {'injected_rtt_ms': 10, 'redis_single_p50_ms': 16.93, 'redis_batch20_p50_ms': 58.02, 'rabbitmq_confirm_p50_ms': 17.5}
+[17:56:07]   G15 rtt=+30ms: {'injected_rtt_ms': 30, 'redis_single_p50_ms': 37.44, 'redis_batch20_p50_ms': 78.93, 'rabbitmq_confirm_p50_ms': 37.86}
+[17:56:07] === G19: Consumer Deduplication Cost (none x memory x redis x pg) ===
+[17:56:23] G19 done: {'none': {'total_ms': 0.01, 'eps': 68917987.5, 'dupes_caught': 0}, 'dedup_memory': {'total_ms': 0.17, 'eps': 11918951.1, 'dupes_caught': 200}, 'dedup_redis': {'total_ms': 10322.36, 'eps': 193.8, 'p99_ms': 9.604, 'dupes_caught': 200}, 'dedup_postgres': {'total_ms': 5604.15, 'eps': 356.9, 'p99_ms': 4.574, 'dupes_caught': 200}}
+[colab] Stopping session 'run-43e56d'...
+[colab] Session terminated.

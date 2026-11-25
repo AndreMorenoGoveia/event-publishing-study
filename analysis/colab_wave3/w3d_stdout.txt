@@ -1,0 +1,334 @@
+
+[colab] A new version of Colab CLI is available: 0.8.0 (current: 0.7.5)
+[colab] Run 'colab update' to update.
+[colab] To silence this check, set "enable_update_check": false in ~/.config/colab-cli/settings.json
+
+===WAVE3D_JSON_START===
+{
+  "meta": {
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "cpus": 8,
+    "runtime_s": 349.4
+  },
+  "N12_runs": [
+    {
+      "rate": 100,
+      "poll_ms": 10,
+      "batch_size": 10,
+      "k_relays": 1,
+      "cleanup": "mark",
+      "expected": 450,
+      "delivered": 450,
+      "o1_violations": 0,
+      "l_req_p99_ms": 9.86,
+      "l_e2e_p50_ms": 19.32,
+      "l_e2e_p99_ms": 1038.21,
+      "coded": {
+        "A_poll": -1,
+        "B_batch": -1,
+        "C_relays": -1,
+        "D_cleanup": -1
+      }
+    },
+    {
+      "rate": 100,
+      "poll_ms": 200,
+      "batch_size": 10,
+      "k_relays": 1,
+      "cleanup": "delete",
+      "expected": 450,
+      "delivered": 450,
+      "o1_violations": 0,
+      "l_req_p99_ms": 228.88,
+      "l_e2e_p50_ms": 129.22,
+      "l_e2e_p99_ms": 929.97,
+      "coded": {
+        "A_poll": 1,
+        "B_batch": -1,
+        "C_relays": -1,
+        "D_cleanup": 1
+      }
+    },
+    {
+      "rate": 100,
+      "poll_ms": 10,
+      "batch_size": 200,
+      "k_relays": 1,
+      "cleanup": "delete",
+      "expected": 450,
+      "delivered": 450,
+      "o1_violations": 0,
+      "l_req_p99_ms": 9.15,
+      "l_e2e_p50_ms": 17.61,
+      "l_e2e_p99_ms": 928.84,
+      "coded": {
+        "A_poll": -1,
+        "B_batch": 1,
+        "C_relays": -1,
+        "D_cleanup": 1
+      }
+    },
+    {
+      "rate": 100,
+      "poll_ms": 200,
+      "batch_size": 200,
+      "k_relays": 1,
+      "cleanup": "mark",
+      "expected": 450,
+      "delivered": 450,
+      "o1_violations": 0,
+      "l_req_p99_ms": 8.88,
+      "l_e2e_p50_ms": 131.14,
+      "l_e2e_p99_ms": 929.43,
+      "coded": {
+        "A_poll": 1,
+        "B_batch": 1,
+        "C_relays": -1,
+        "D_cleanup": -1
+      }
+    },
+    {
+      "rate": 100,
+      "poll_ms": 10,
+      "batch_size": 10,
+      "k_relays": 2,
+      "cleanup": "delete",
+      "expected": 450,
+      "delivered": 450,
+      "o1_violations": 0,
+      "l_req_p99_ms": 9.63,
+      "l_e2e_p50_ms": 15.17,
+      "l_e2e_p99_ms": 930.26,
+      "coded": {
+        "A_poll": -1,
+        "B_batch": -1,
+        "C_relays": 1,
+        "D_cleanup": 1
+      }
+    },
+    {
+      "rate": 100,
+      "poll_ms": 200,
+      "batch_size": 10,
+      "k_relays": 2,
+      "cleanup": "mark",
+      "expected": 450,
+      "delivered": 450,
+      "o1_violations": 0,
+      "l_req_p99_ms": 9.07,
+      "l_e2e_p50_ms": 124.18,
+      "l_e2e_p99_ms": 927.07,
+      "coded": {
+        "A_poll": 1,
+        "B_batch": -1,
+        "C_relays": 1,
+        "D_cleanup": -1
+      }
+    },
+    {
+      "rate": 100,
+      "poll_ms": 10,
+      "batch_size": 200,
+      "k_relays": 2,
+      "cleanup": "mark",
+      "expected": 450,
+      "delivered": 450,
+      "o1_violations": 0,
+      "l_req_p99_ms": 10.94,
+      "l_e2e_p50_ms": 15.77,
+      "l_e2e_p99_ms": 924.44,
+      "coded": {
+        "A_poll": -1,
+        "B_batch": 1,
+        "C_relays": 1,
+        "D_cleanup": -1
+      }
+    },
+    {
+      "rate": 100,
+      "poll_ms": 200,
+      "batch_size": 200,
+      "k_relays": 2,
+      "cleanup": "delete",
+      "expected": 450,
+      "delivered": 450,
+      "o1_violations": 0,
+      "l_req_p99_ms": 12.92,
+      "l_e2e_p50_ms": 131.44,
+      "l_e2e_p99_ms": 926.02,
+      "coded": {
+        "A_poll": 1,
+        "B_batch": 1,
+        "C_relays": 1,
+        "D_cleanup": 1
+      }
+    },
+    {
+      "rate": 600,
+      "poll_ms": 10,
+      "batch_size": 10,
+      "k_relays": 1,
+      "cleanup": "mark",
+      "expected": 2700,
+      "delivered": 2700,
+      "o1_violations": 0,
+      "l_req_p99_ms": 10.79,
+      "l_e2e_p50_ms": 15.24,
+      "l_e2e_p99_ms": 924.64,
+      "coded": {
+        "A_poll": -1,
+        "B_batch": -1,
+        "C_relays": -1,
+        "D_cleanup": -1
+      }
+    },
+    {
+      "rate": 600,
+      "poll_ms": 200,
+      "batch_size": 10,
+      "k_relays": 1,
+      "cleanup": "delete",
+      "expected": 2700,
+      "delivered": 2700,
+      "o1_violations": 0,
+      "l_req_p99_ms": 9.85,
+      "l_e2e_p50_ms": 13.2,
+      "l_e2e_p99_ms": 927.53,
+      "coded": {
+        "A_poll": 1,
+        "B_batch": -1,
+        "C_relays": -1,
+        "D_cleanup": 1
+      }
+    },
+    {
+      "rate": 600,
+      "poll_ms": 10,
+      "batch_size": 200,
+      "k_relays": 1,
+      "cleanup": "delete",
+      "expected": 2700,
+      "delivered": 2700,
+      "o1_violations": 0,
+      "l_req_p99_ms": 58.63,
+      "l_e2e_p50_ms": 14.64,
+      "l_e2e_p99_ms": 930.7,
+      "coded": {
+        "A_poll": -1,
+        "B_batch": 1,
+        "C_relays": -1,
+        "D_cleanup": 1
+      }
+    },
+    {
+      "rate": 600,
+      "poll_ms": 200,
+      "batch_size": 200,
+      "k_relays": 1,
+      "cleanup": "mark",
+      "expected": 2700,
+      "delivered": 2700,
+      "o1_violations": 0,
+      "l_req_p99_ms": 26.37,
+      "l_e2e_p50_ms": 14.18,
+      "l_e2e_p99_ms": 925.09,
+      "coded": {
+        "A_poll": 1,
+        "B_batch": 1,
+        "C_relays": -1,
+        "D_cleanup": -1
+      }
+    },
+    {
+      "rate": 600,
+      "poll_ms": 10,
+      "batch_size": 10,
+      "k_relays": 2,
+      "cleanup": "delete",
+      "expected": 2700,
+      "delivered": 2700,
+      "o1_violations": 0,
+      "l_req_p99_ms": 10.23,
+      "l_e2e_p50_ms": 12.35,
+      "l_e2e_p99_ms": 924.45,
+      "coded": {
+        "A_poll": -1,
+        "B_batch": -1,
+        "C_relays": 1,
+        "D_cleanup": 1
+      }
+    },
+    {
+      "rate": 600,
+      "poll_ms": 200,
+      "batch_size": 10,
+      "k_relays": 2,
+      "cleanup": "mark",
+      "expected": 2700,
+      "delivered": 2700,
+      "o1_violations": 0,
+      "l_req_p99_ms": 10.83,
+      "l_e2e_p50_ms": 12.9,
+      "l_e2e_p99_ms": 923.61,
+      "coded": {
+        "A_poll": 1,
+        "B_batch": -1,
+        "C_relays": 1,
+        "D_cleanup": -1
+      }
+    },
+    {
+      "rate": 600,
+      "poll_ms": 10,
+      "batch_size": 200,
+      "k_relays": 2,
+      "cleanup": "mark",
+      "expected": 2700,
+      "delivered": 2700,
+      "o1_violations": 1,
+      "l_req_p99_ms": 26.84,
+      "l_e2e_p50_ms": 13.77,
+      "l_e2e_p99_ms": 926.44,
+      "coded": {
+        "A_poll": -1,
+        "B_batch": 1,
+        "C_relays": 1,
+        "D_cleanup": -1
+      }
+    },
+    {
+      "rate": 600,
+      "poll_ms": 200,
+      "batch_size": 200,
+      "k_relays": 2,
+      "cleanup": "delete",
+      "expected": 2700,
+      "delivered": 2700,
+      "o1_violations": 0,
+      "l_req_p99_ms": 12.3,
+      "l_e2e_p50_ms": 12.93,
+      "l_e2e_p99_ms": 924.85,
+      "coded": {
+        "A_poll": 1,
+        "B_batch": 1,
+        "C_relays": 1,
+        "D_cleanup": 1
+      }
+    }
+  ],
+  "N12_main_effects_ratio": {
+    "100": {
+      "A_poll": 0.973,
+      "B_batch": 0.971,
+      "C_relays": 0.97,
+      "D_cleanup": 0.974
+    },
+    "600": {
+      "A_poll": 0.999,
+      "B_batch": 1.002,
+      "C_relays": 0.998,
+      "D_cleanup": 1.002
+    }
+  }
+}
+===WAVE3D_JSON_END===

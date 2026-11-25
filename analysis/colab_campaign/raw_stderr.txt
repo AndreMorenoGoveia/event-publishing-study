@@ -1,0 +1,199 @@
+[colab] Creating session 'run-07171e'...
+[colab] Session READY (run-07171e). Executing experiments/colab_campaign/run_campaign.py...
+[16:17:17] Installing PostgreSQL, RabbitMQ, Redis, OpenJDK 21, and Python clients...
+[16:17:17] $ apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib rabbitmq-server redis-server openjdk-21-jre-headless curl
+[16:18:06] $ /usr/bin/python3 -m pip install -q psycopg2-binary pika redis confluent-kafka numpy scipy
+[16:18:09] $ ls /etc/postgresql | sort -V | tail -n 1
+[16:18:09] $ service postgresql restart
+[16:18:11] $ su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'postgres' SUPERUSER REPLICATION;\""
+[16:18:11] $ su - postgres -c "psql -c \"CREATE DATABASE study;\""
+[16:18:12] $ service rabbitmq-server start
+[16:18:17] $ rabbitmqctl status
+[16:18:17] $ redis-server --daemonize yes --appendonly yes --appendfsync always --save '' --port 6379
+[16:18:17] $ redis-cli ping
+[16:18:17] $ curl -fsSL https://archive.apache.org/dist/kafka/3.9.0/kafka_2.13-3.9.0.tgz -o /tmp/kafka.tgz && mkdir -p /opt/kafka && tar -xzf /tmp/kafka.tgz -C /opt/kafka --strip-components=1 && rm /tmp/kafka.tgz
+[16:18:24] $ /opt/kafka/bin/kafka-storage.sh random-uuid
+[16:18:25] $ /opt/kafka/bin/kafka-storage.sh format -t zA7KaScRRm-yUOOTvUz44w -c /opt/kafka/config/kraft/server.properties --ignore-formatted
+[16:18:27] $ KAFKA_HEAP_OPTS='-Xmx1G -Xms512M' /opt/kafka/bin/kafka-server-start.sh -daemon /opt/kafka/config/kraft/server.properties
+[16:18:27] $ /opt/kafka/bin/kafka-topics.sh --bootstrap-server 127.0.0.1:9092 --list
+[16:18:30] Bootstrap completed in 72.9s (PG 16, Kafka 3.9.0 KRaft, RabbitMQ, Redis AOF=always, CPUs=8, RAM=51.0 GiB)
+[16:18:31] === C1: Full P6 Fencing Verification (Kafka transactional.id vs RabbitMQ) ===
+/tmp/ipykernel_2854/3700281756.py:290: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_2854/3700281756.py:575: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  rmq = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[16:18:39] C1 done: {"kafka_two_layer_fencing": {"versions_delivered": [], "zombie_fenced_by_broker": true, "broker_error": "KafkaError{FATAL,code=_FENCED,val=-144,str=\"Failed to add partitions to transaction: Local: This instance has been fenced by a newer instance\"}", "o1_inversions": 0}, "rabbitmq_db_fencing_only": {"versions_delivered": [1, 2, 1], "db_mark_blocked": true, "zombie_fenced_by_broker": false, "o1_inversions": 1}}
+[16:18:39] === C2: Multi-Transport Frontier (R=3 paired blocks) ===
+[16:18:45]   C2 b=1 rate=25 kafka/outbox-poll(p=10): L_e2e p50=443.9ms p99=2874.3ms cens=0 O1=0
+[16:18:51]   C2 b=1 rate=25 kafka/outbox-poll(p=100): L_e2e p50=403.547ms p99=2833.947ms cens=0 O1=0
+[16:18:57]   C2 b=1 rate=25 kafka/outbox-notify(p=0): L_e2e p50=400.88ms p99=2831.28ms cens=0 O1=0
+[16:19:03]   C2 b=1 rate=25 kafka/outbox-cdc(p=0): L_e2e p50=397.625ms p99=2828.025ms cens=0 O1=0
+/tmp/ipykernel_2854/3700281756.py:403: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_2854/3700281756.py:325: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  self.conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[16:19:09]   C2 b=1 rate=25 rabbitmq/outbox-poll(p=10): L_e2e p50=13.527ms p99=21.297ms cens=0 O1=0
+[16:19:14]   C2 b=1 rate=25 rabbitmq/outbox-poll(p=100): L_e2e p50=55.585ms p99=94.631ms cens=0 O1=0
+[16:19:20]   C2 b=1 rate=25 rabbitmq/outbox-cdc(p=0): L_e2e p50=10.188ms p99=12.954ms cens=0 O1=0
+[16:19:26]   C2 b=1 rate=25 redis/outbox-poll(p=10): L_e2e p50=15.287ms p99=21.8ms cens=0 O1=0
+[16:19:31]   C2 b=1 rate=25 redis/outbox-poll(p=100): L_e2e p50=58.891ms p99=112.551ms cens=0 O1=0
+[16:19:37]   C2 b=1 rate=25 redis/outbox-cdc(p=0): L_e2e p50=9.441ms p99=11.783ms cens=0 O1=0
+[16:19:42]   C2 b=1 rate=25 pg-queue/pg-queue(p=0): L_e2e p50=9.085ms p99=13.376ms cens=0 O1=0
+[16:19:48]   C2 b=1 rate=100 kafka/outbox-poll(p=10): L_e2e p50=372.139ms p99=2827.147ms cens=0 O1=0
+[16:19:54]   C2 b=1 rate=100 kafka/outbox-poll(p=100): L_e2e p50=375.508ms p99=2815.228ms cens=0 O1=0
+[16:20:00]   C2 b=1 rate=100 kafka/outbox-notify(p=0): L_e2e p50=375.871ms p99=2816.887ms cens=0 O1=0
+[16:20:06]   C2 b=1 rate=100 kafka/outbox-cdc(p=0): L_e2e p50=375.95ms p99=2815.178ms cens=0 O1=0
+[16:20:12]   C2 b=1 rate=100 rabbitmq/outbox-poll(p=10): L_e2e p50=14.463ms p99=21.308ms cens=0 O1=0
+[16:20:18]   C2 b=1 rate=100 rabbitmq/outbox-poll(p=100): L_e2e p50=52.626ms p99=110.274ms cens=0 O1=0
+[16:20:23]   C2 b=1 rate=100 rabbitmq/outbox-cdc(p=0): L_e2e p50=9.181ms p99=12.955ms cens=0 O1=0
+[16:20:29]   C2 b=1 rate=100 redis/outbox-poll(p=10): L_e2e p50=26.64ms p99=38.364ms cens=0 O1=0
+[16:20:34]   C2 b=1 rate=100 redis/outbox-poll(p=100): L_e2e p50=28.428ms p99=77.667ms cens=0 O1=0
+[16:20:40]   C2 b=1 rate=100 redis/outbox-cdc(p=0): L_e2e p50=17.066ms p99=29.075ms cens=0 O1=0
+[16:20:45]   C2 b=1 rate=100 pg-queue/pg-queue(p=0): L_e2e p50=9.188ms p99=14.043ms cens=0 O1=0
+[16:20:51]   C2 b=1 rate=300 kafka/outbox-poll(p=10): L_e2e p50=367.526ms p99=2818.866ms cens=0 O1=0
+[16:20:57]   C2 b=1 rate=300 kafka/outbox-poll(p=100): L_e2e p50=369.61ms p99=2816.932ms cens=0 O1=0
+[16:21:03]   C2 b=1 rate=300 kafka/outbox-notify(p=0): L_e2e p50=370.59ms p99=2817.641ms cens=0 O1=0
+[16:21:10]   C2 b=1 rate=300 kafka/outbox-cdc(p=0): L_e2e p50=372.861ms p99=2815.086ms cens=0 O1=0
+[16:21:18]   C2 b=1 rate=300 rabbitmq/outbox-poll(p=10): L_e2e p50=1463.305ms p99=2544.314ms cens=0 O1=0
+[16:21:26]   C2 b=1 rate=300 rabbitmq/outbox-poll(p=100): L_e2e p50=1525.171ms p99=2534.417ms cens=0 O1=0
+[16:21:34]   C2 b=1 rate=300 rabbitmq/outbox-cdc(p=0): L_e2e p50=1510.762ms p99=2583.826ms cens=0 O1=0
+[16:21:39]   C2 b=1 rate=300 redis/outbox-poll(p=10): L_e2e p50=27.249ms p99=42.428ms cens=0 O1=0
+[16:21:45]   C2 b=1 rate=300 redis/outbox-poll(p=100): L_e2e p50=30.521ms p99=86.24ms cens=0 O1=0
+[16:21:56]   C2 b=1 rate=300 redis/outbox-cdc(p=0): L_e2e p50=3242.931ms p99=5470.835ms cens=106 O1=0
+[16:22:01]   C2 b=1 rate=300 pg-queue/pg-queue(p=0): L_e2e p50=8.291ms p99=12.88ms cens=0 O1=3
+[16:22:07]   C2 b=1 rate=600 kafka/outbox-poll(p=10): L_e2e p50=373.523ms p99=2818.502ms cens=0 O1=0
+[16:22:13]   C2 b=1 rate=600 kafka/outbox-poll(p=100): L_e2e p50=367.977ms p99=2820.914ms cens=0 O1=0
+[16:22:23]   C2 b=1 rate=600 kafka/outbox-notify(p=0): L_e2e p50=2438.993ms p99=4140.398ms cens=0 O1=0
+[16:22:29]   C2 b=1 rate=600 kafka/outbox-cdc(p=0): L_e2e p50=369.462ms p99=2816.841ms cens=0 O1=0
+[16:22:40]   C2 b=1 rate=600 rabbitmq/outbox-poll(p=10): L_e2e p50=3825.239ms p99=6876.297ms cens=1057 O1=0
+[16:22:51]   C2 b=1 rate=600 rabbitmq/outbox-cdc(p=0): L_e2e p50=3808.979ms p99=6719.383ms cens=962 O1=0
+[16:22:56]   C2 b=1 rate=600 redis/outbox-poll(p=10): L_e2e p50=31.474ms p99=45.516ms cens=0 O1=0
+[16:23:02]   C2 b=1 rate=600 redis/outbox-poll(p=100): L_e2e p50=33.275ms p99=91.529ms cens=0 O1=0
+[16:23:10]   C2 b=1 rate=600 redis/outbox-cdc(p=0): L_e2e p50=3347.037ms p99=4573.54ms cens=0 O1=0
+[16:23:15]   C2 b=1 rate=600 pg-queue/pg-queue(p=0): L_e2e p50=8.28ms p99=14.414ms cens=0 O1=10
+[16:23:21]   C2 b=2 rate=25 kafka/outbox-poll(p=10): L_e2e p50=395.593ms p99=2814.753ms cens=0 O1=0
+[16:23:27]   C2 b=2 rate=25 kafka/outbox-poll(p=100): L_e2e p50=384.724ms p99=2815.124ms cens=0 O1=0
+[16:23:33]   C2 b=2 rate=25 kafka/outbox-notify(p=0): L_e2e p50=388.477ms p99=2818.877ms cens=0 O1=0
+[16:23:39]   C2 b=2 rate=25 kafka/outbox-cdc(p=0): L_e2e p50=387.142ms p99=2817.542ms cens=0 O1=0
+[16:23:45]   C2 b=2 rate=25 rabbitmq/outbox-poll(p=10): L_e2e p50=12.335ms p99=20.015ms cens=0 O1=0
+[16:23:50]   C2 b=2 rate=25 rabbitmq/outbox-poll(p=100): L_e2e p50=53.82ms p99=93.167ms cens=0 O1=0
+[16:23:56]   C2 b=2 rate=25 rabbitmq/outbox-cdc(p=0): L_e2e p50=9.291ms p99=11.909ms cens=0 O1=0
+[16:24:02]   C2 b=2 rate=25 redis/outbox-poll(p=10): L_e2e p50=15.107ms p99=20.113ms cens=0 O1=0
+[16:24:07]   C2 b=2 rate=25 redis/outbox-poll(p=100): L_e2e p50=58.359ms p99=112.726ms cens=0 O1=0
+[16:24:13]   C2 b=2 rate=25 redis/outbox-cdc(p=0): L_e2e p50=8.586ms p99=14.249ms cens=0 O1=0
+[16:24:18]   C2 b=2 rate=25 pg-queue/pg-queue(p=0): L_e2e p50=9.193ms p99=13.249ms cens=0 O1=0
+[16:24:24]   C2 b=2 rate=100 kafka/outbox-poll(p=10): L_e2e p50=368.486ms p99=2812.727ms cens=0 O1=0
+[16:24:30]   C2 b=2 rate=100 kafka/outbox-poll(p=100): L_e2e p50=369.683ms p99=2814.783ms cens=0 O1=0
+[16:24:36]   C2 b=2 rate=100 kafka/outbox-notify(p=0): L_e2e p50=381.311ms p99=2814.686ms cens=0 O1=0
+[16:24:42]   C2 b=2 rate=100 kafka/outbox-cdc(p=0): L_e2e p50=373.229ms p99=2813.329ms cens=0 O1=0
+[16:24:48]   C2 b=2 rate=100 rabbitmq/outbox-poll(p=10): L_e2e p50=14.058ms p99=21.336ms cens=0 O1=0
+[16:24:54]   C2 b=2 rate=100 rabbitmq/outbox-poll(p=100): L_e2e p50=54.136ms p99=110.271ms cens=0 O1=0
+[16:24:59]   C2 b=2 rate=100 rabbitmq/outbox-cdc(p=0): L_e2e p50=8.571ms p99=13.642ms cens=0 O1=0
+[16:25:05]   C2 b=2 rate=100 redis/outbox-poll(p=10): L_e2e p50=23.119ms p99=33.543ms cens=0 O1=0
+[16:25:10]   C2 b=2 rate=100 redis/outbox-poll(p=100): L_e2e p50=25.629ms p99=101.268ms cens=0 O1=0
+[16:25:16]   C2 b=2 rate=100 redis/outbox-cdc(p=0): L_e2e p50=8.686ms p99=31.388ms cens=0 O1=0
+[16:25:21]   C2 b=2 rate=100 pg-queue/pg-queue(p=0): L_e2e p50=9.067ms p99=12.901ms cens=0 O1=0
+[16:25:27]   C2 b=2 rate=300 kafka/outbox-poll(p=10): L_e2e p50=367.716ms p99=2816.048ms cens=0 O1=0
+[16:25:33]   C2 b=2 rate=300 kafka/outbox-poll(p=100): L_e2e p50=369.715ms p99=2813.407ms cens=0 O1=0
+[16:25:39]   C2 b=2 rate=300 kafka/outbox-notify(p=0): L_e2e p50=372.143ms p99=2815.132ms cens=0 O1=0
+[16:25:46]   C2 b=2 rate=300 kafka/outbox-cdc(p=0): L_e2e p50=367.63ms p99=2818.086ms cens=0 O1=0
+[16:25:54]   C2 b=2 rate=300 rabbitmq/outbox-poll(p=10): L_e2e p50=1650.849ms p99=2755.871ms cens=0 O1=0
+[16:26:03]   C2 b=2 rate=300 rabbitmq/outbox-poll(p=100): L_e2e p50=1592.449ms p99=3146.927ms cens=0 O1=0
+[16:26:11]   C2 b=2 rate=300 rabbitmq/outbox-cdc(p=0): L_e2e p50=1718.014ms p99=2995.569ms cens=0 O1=0
+[16:26:17]   C2 b=2 rate=300 redis/outbox-poll(p=10): L_e2e p50=30.61ms p99=44.505ms cens=0 O1=0
+[16:26:22]   C2 b=2 rate=300 redis/outbox-poll(p=100): L_e2e p50=27.889ms p99=84.833ms cens=0 O1=0
+[16:26:33]   C2 b=2 rate=300 redis/outbox-cdc(p=0): L_e2e p50=3076.367ms p99=5470.536ms cens=104 O1=0
+[16:26:39]   C2 b=2 rate=300 pg-queue/pg-queue(p=0): L_e2e p50=8.724ms p99=13.214ms cens=0 O1=3
+[16:26:45]   C2 b=2 rate=600 kafka/outbox-poll(p=10): L_e2e p50=386.687ms p99=2827.956ms cens=0 O1=0
+[16:26:51]   C2 b=2 rate=600 kafka/outbox-poll(p=100): L_e2e p50=367.087ms p99=2814.116ms cens=0 O1=0
+[16:27:01]   C2 b=2 rate=600 kafka/outbox-notify(p=0): L_e2e p50=2402.601ms p99=4119.11ms cens=0 O1=0
+[16:27:07]   C2 b=2 rate=600 kafka/outbox-cdc(p=0): L_e2e p50=372.031ms p99=2818.252ms cens=0 O1=0
+[16:27:17]   C2 b=2 rate=600 rabbitmq/outbox-poll(p=10): L_e2e p50=3729.589ms p99=6539.28ms cens=857 O1=0
+[16:27:28]   C2 b=2 rate=600 rabbitmq/outbox-cdc(p=0): L_e2e p50=3836.453ms p99=6617.714ms cens=900 O1=0
+[16:27:34]   C2 b=2 rate=600 redis/outbox-poll(p=10): L_e2e p50=30.764ms p99=46.117ms cens=0 O1=0
+[16:27:39]   C2 b=2 rate=600 redis/outbox-poll(p=100): L_e2e p50=32.087ms p99=89.823ms cens=0 O1=0
+[16:27:48]   C2 b=2 rate=600 redis/outbox-cdc(p=0): L_e2e p50=3673.198ms p99=4958.288ms cens=0 O1=0
+[16:27:53]   C2 b=2 rate=600 pg-queue/pg-queue(p=0): L_e2e p50=8.588ms p99=13.805ms cens=0 O1=7
+[16:27:59]   C2 b=3 rate=25 kafka/outbox-poll(p=10): L_e2e p50=388.886ms p99=2819.286ms cens=0 O1=0
+[16:28:05]   C2 b=3 rate=25 kafka/outbox-poll(p=100): L_e2e p50=389.801ms p99=2820.201ms cens=0 O1=0
+[16:28:11]   C2 b=3 rate=25 kafka/outbox-notify(p=0): L_e2e p50=390.485ms p99=2820.885ms cens=0 O1=0
+[16:28:17]   C2 b=3 rate=25 kafka/outbox-cdc(p=0): L_e2e p50=388.563ms p99=2818.963ms cens=0 O1=0
+[16:28:23]   C2 b=3 rate=25 rabbitmq/outbox-poll(p=10): L_e2e p50=16.72ms p99=21.154ms cens=0 O1=0
+[16:28:28]   C2 b=3 rate=25 rabbitmq/outbox-poll(p=100): L_e2e p50=56.157ms p99=98.336ms cens=0 O1=0
+[16:28:34]   C2 b=3 rate=25 rabbitmq/outbox-cdc(p=0): L_e2e p50=9.999ms p99=13.344ms cens=0 O1=0
+[16:28:39]   C2 b=3 rate=25 redis/outbox-poll(p=10): L_e2e p50=13.957ms p99=20.893ms cens=0 O1=0
+[16:28:45]   C2 b=3 rate=25 redis/outbox-poll(p=100): L_e2e p50=56.858ms p99=111.247ms cens=0 O1=0
+[16:28:50]   C2 b=3 rate=25 redis/outbox-cdc(p=0): L_e2e p50=9.255ms p99=11.945ms cens=0 O1=0
+[16:28:56]   C2 b=3 rate=25 pg-queue/pg-queue(p=0): L_e2e p50=9.372ms p99=13.432ms cens=0 O1=0
+[16:29:02]   C2 b=3 rate=100 kafka/outbox-poll(p=10): L_e2e p50=369.318ms p99=2814.418ms cens=0 O1=0
+[16:29:08]   C2 b=3 rate=100 kafka/outbox-poll(p=100): L_e2e p50=368.522ms p99=2813.622ms cens=0 O1=0
+[16:29:14]   C2 b=3 rate=100 kafka/outbox-notify(p=0): L_e2e p50=366.957ms p99=2812.057ms cens=0 O1=0
+[16:29:20]   C2 b=3 rate=100 kafka/outbox-cdc(p=0): L_e2e p50=367.938ms p99=2822.956ms cens=0 O1=0
+[16:29:26]   C2 b=3 rate=100 rabbitmq/outbox-poll(p=10): L_e2e p50=13.998ms p99=21.523ms cens=0 O1=0
+[16:29:31]   C2 b=3 rate=100 rabbitmq/outbox-poll(p=100): L_e2e p50=54.714ms p99=110.77ms cens=0 O1=0
+[16:29:37]   C2 b=3 rate=100 rabbitmq/outbox-cdc(p=0): L_e2e p50=8.456ms p99=11.297ms cens=0 O1=0
+[16:29:42]   C2 b=3 rate=100 redis/outbox-poll(p=10): L_e2e p50=24.931ms p99=35.29ms cens=0 O1=0
+[16:29:48]   C2 b=3 rate=100 redis/outbox-poll(p=100): L_e2e p50=24.803ms p99=74.732ms cens=0 O1=0
+[16:29:54]   C2 b=3 rate=100 redis/outbox-cdc(p=0): L_e2e p50=8.236ms p99=28.69ms cens=0 O1=0
+[16:29:59]   C2 b=3 rate=100 pg-queue/pg-queue(p=0): L_e2e p50=8.794ms p99=12.945ms cens=0 O1=0
+[16:30:05]   C2 b=3 rate=300 kafka/outbox-poll(p=10): L_e2e p50=370.61ms p99=2815.259ms cens=0 O1=0
+[16:30:11]   C2 b=3 rate=300 kafka/outbox-poll(p=100): L_e2e p50=369.965ms p99=2819.71ms cens=0 O1=0
+[16:30:17]   C2 b=3 rate=300 kafka/outbox-notify(p=0): L_e2e p50=376.286ms p99=2815.18ms cens=0 O1=0
+[16:30:23]   C2 b=3 rate=300 kafka/outbox-cdc(p=0): L_e2e p50=368.389ms p99=2816.53ms cens=0 O1=0
+[16:30:31]   C2 b=3 rate=300 rabbitmq/outbox-poll(p=10): L_e2e p50=1512.771ms p99=2683.689ms cens=0 O1=0
+[16:30:40]   C2 b=3 rate=300 rabbitmq/outbox-poll(p=100): L_e2e p50=1607.468ms p99=2815.354ms cens=0 O1=0
+[16:30:48]   C2 b=3 rate=300 rabbitmq/outbox-cdc(p=0): L_e2e p50=1754.831ms p99=2924.743ms cens=0 O1=0
+[16:30:54]   C2 b=3 rate=300 redis/outbox-poll(p=10): L_e2e p50=27.794ms p99=40.448ms cens=0 O1=0
+[16:30:59]   C2 b=3 rate=300 redis/outbox-poll(p=100): L_e2e p50=26.49ms p99=80.851ms cens=0 O1=0
+[16:31:10]   C2 b=3 rate=300 redis/outbox-cdc(p=0): L_e2e p50=3154.815ms p99=5647.797ms cens=160 O1=0
+[16:31:16]   C2 b=3 rate=300 pg-queue/pg-queue(p=0): L_e2e p50=10.016ms p99=14.216ms cens=0 O1=0
+[16:31:22]   C2 b=3 rate=600 kafka/outbox-poll(p=10): L_e2e p50=371.252ms p99=2820.048ms cens=0 O1=0
+[16:31:28]   C2 b=3 rate=600 kafka/outbox-poll(p=100): L_e2e p50=369.914ms p99=2817.089ms cens=0 O1=0
+[16:31:38]   C2 b=3 rate=600 kafka/outbox-notify(p=0): L_e2e p50=2388.878ms p99=3938.152ms cens=0 O1=0
+[16:31:44]   C2 b=3 rate=600 kafka/outbox-cdc(p=0): L_e2e p50=368.386ms p99=2812.941ms cens=0 O1=0
+[16:31:54]   C2 b=3 rate=600 rabbitmq/outbox-poll(p=10): L_e2e p50=3821.942ms p99=6882.997ms cens=1058 O1=0
+[16:32:05]   C2 b=3 rate=600 rabbitmq/outbox-cdc(p=0): L_e2e p50=3891.317ms p99=6911.636ms cens=1087 O1=0
+[16:32:11]   C2 b=3 rate=600 redis/outbox-poll(p=10): L_e2e p50=32.48ms p99=50.643ms cens=0 O1=0
+[16:32:16]   C2 b=3 rate=600 redis/outbox-poll(p=100): L_e2e p50=34.052ms p99=92.634ms cens=0 O1=0
+[16:32:24]   C2 b=3 rate=600 redis/outbox-cdc(p=0): L_e2e p50=3457.61ms p99=4717.174ms cens=0 O1=0
+[16:32:30]   C2 b=3 rate=600 pg-queue/pg-queue(p=0): L_e2e p50=8.461ms p99=13.885ms cens=0 O1=7
+[16:32:30] === C3: Ablation A5 — Aggregate Contention (1 hot aggregate vs 200, c=8) ===
+[16:32:37]   C3 hot=200 kafka/outbox-poll(p=10): L_req p99=6.07ms L_e2e p99=2806.907ms cens=0
+[16:32:44]   C3 hot=200 kafka/outbox-poll(p=100): L_req p99=5.308ms L_e2e p99=2806.55ms cens=0
+[16:32:51]   C3 hot=200 kafka/outbox-cdc(p=0): L_req p99=4.795ms L_e2e p99=2801.915ms cens=0
+[16:32:58]   C3 hot=1 kafka/outbox-poll(p=10): L_req p99=6.492ms L_e2e p99=2807.013ms cens=0
+[16:33:05]   C3 hot=1 kafka/outbox-poll(p=100): L_req p99=5.5ms L_e2e p99=2806.73ms cens=0
+[16:33:12]   C3 hot=1 kafka/outbox-cdc(p=0): L_req p99=5.875ms L_e2e p99=2808.2ms cens=0
+[16:33:12] === C4: Ablation A1/A2 — Batch x Poll + Microconstants ===
+[16:33:18]   C4 kafka b=1 p=10: L_e2e p99=2810.915ms micro={'T_q_median': 0.465, 'T_pub_median': 0.535, 'T_mark_median': 2.201, 'batches': 500}
+[16:33:24]   C4 kafka b=1 p=100: L_e2e p99=2812.062ms micro={'T_q_median': 0.342, 'T_pub_median': 0.442, 'T_mark_median': 2.037, 'batches': 500}
+[16:33:30]   C4 kafka b=50 p=10: L_e2e p99=2810.958ms micro={'T_q_median': 0.481, 'T_pub_median': 0.557, 'T_mark_median': 2.226, 'batches': 449}
+[16:33:36]   C4 kafka b=50 p=100: L_e2e p99=2821.302ms micro={'T_q_median': 0.708, 'T_pub_median': 1.491, 'T_mark_median': 2.433, 'batches': 76}
+[16:33:43]   C4 kafka b=50 p=500: L_e2e p99=2814.123ms micro={'T_q_median': 0.917, 'T_pub_median': 1.53, 'T_mark_median': 2.579, 'batches': 22}
+[16:33:49]   C4 kafka b=200 p=10: L_e2e p99=2812.404ms micro={'T_q_median': 0.532, 'T_pub_median': 0.608, 'T_mark_median': 2.383, 'batches': 429}
+[16:33:55]   C4 kafka b=200 p=100: L_e2e p99=2821.245ms micro={'T_q_median': 0.749, 'T_pub_median': 1.519, 'T_mark_median': 2.458, 'batches': 83}
+[16:34:01]   C4 kafka b=200 p=500: L_e2e p99=2810.242ms micro={'T_q_median': 1.176, 'T_pub_median': 2.933, 'T_mark_median': 2.838, 'batches': 18}
+[16:34:07]   C4 redis b=1 p=10: L_e2e p99=367.101ms micro={'T_q_median': 0.477, 'T_pub_median': 6.443, 'T_mark_median': 3.34, 'batches': 500}
+[16:34:13]   C4 redis b=1 p=100: L_e2e p99=475.394ms micro={'T_q_median': 0.473, 'T_pub_median': 6.481, 'T_mark_median': 3.331, 'batches': 500}
+[16:34:19]   C4 redis b=50 p=10: L_e2e p99=34.531ms micro={'T_q_median': 0.48, 'T_pub_median': 6.371, 'T_mark_median': 3.417, 'batches': 432}
+[16:34:24]   C4 redis b=50 p=100: L_e2e p99=107.321ms micro={'T_q_median': 0.479, 'T_pub_median': 6.842, 'T_mark_median': 3.32, 'batches': 431}
+[16:34:30]   C4 redis b=50 p=500: L_e2e p99=484.576ms micro={'T_q_median': 0.502, 'T_pub_median': 6.902, 'T_mark_median': 3.435, 'batches': 380}
+[16:34:36]   C4 redis b=200 p=10: L_e2e p99=33.316ms micro={'T_q_median': 0.496, 'T_pub_median': 6.572, 'T_mark_median': 3.298, 'batches': 455}
+[16:34:41]   C4 redis b=200 p=100: L_e2e p99=110.375ms micro={'T_q_median': 0.49, 'T_pub_median': 6.513, 'T_mark_median': 3.236, 'batches': 424}
+[16:34:47]   C4 redis b=200 p=500: L_e2e p99=510.455ms micro={'T_q_median': 0.478, 'T_pub_median': 6.504, 'T_mark_median': 3.335, 'batches': 305}
+[16:34:53]   C4 rabbitmq b=1 p=10: L_e2e p99=21.065ms micro={'T_q_median': 0.441, 'T_pub_median': 4.414, 'T_mark_median': 2.251, 'batches': 500}
+[16:34:58]   C4 rabbitmq b=1 p=100: L_e2e p99=108.418ms micro={'T_q_median': 0.399, 'T_pub_median': 4.294, 'T_mark_median': 2.177, 'batches': 500}
+[16:35:04]   C4 rabbitmq b=50 p=10: L_e2e p99=21.454ms micro={'T_q_median': 0.486, 'T_pub_median': 4.554, 'T_mark_median': 2.331, 'batches': 435}
+[16:35:10]   C4 rabbitmq b=50 p=100: L_e2e p99=109.183ms micro={'T_q_median': 0.481, 'T_pub_median': 8.06, 'T_mark_median': 2.31, 'batches': 148}
+[16:35:15]   C4 rabbitmq b=50 p=500: L_e2e p99=506.792ms micro={'T_q_median': 0.525, 'T_pub_median': 17.116, 'T_mark_median': 2.352, 'batches': 43}
+[16:35:21]   C4 rabbitmq b=200 p=10: L_e2e p99=20.636ms micro={'T_q_median': 0.489, 'T_pub_median': 4.716, 'T_mark_median': 2.424, 'batches': 406}
+[16:35:27]   C4 rabbitmq b=200 p=100: L_e2e p99=109.506ms micro={'T_q_median': 0.519, 'T_pub_median': 8.398, 'T_mark_median': 2.44, 'batches': 147}
+[16:35:33]   C4 rabbitmq b=200 p=500: L_e2e p99=504.877ms micro={'T_q_median': 0.623, 'T_pub_median': 20.234, 'T_mark_median': 2.549, 'batches': 42}
+[16:35:33] === C5: Hybrid Application (4 concurrent flows on SAME PostgreSQL) ===
+[16:35:47]   C5 billing_cdc_kafka: deliv=1000/1000 L_e2e p50=11.87ms p99=2662.3ms
+[16:35:47]   C5 audit_poll_kafka: deliv=2500/2500 L_e2e p50=60.18ms p99=2652.12ms
+[16:35:47]   C5 webhooks_poll_rmq: deliv=400/400 L_e2e p50=57.64ms p99=108.14ms
+[16:35:47]   C5 emails_pg_queue: deliv=300/300 L_e2e p50=13.01ms p99=21.2ms
+[16:35:47] Full multi-transport campaign completed in 1109.5s
+[colab] Stopping session 'run-07171e'...
+[colab] Session terminated.

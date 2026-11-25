@@ -150,3 +150,5 @@ Ordem de leitura recomendada: 00 → 11 → 12 → 13 → 03 → 05 → 06 → 0
 | [09-analise-e-guia.md](09-analise-e-guia.md) | Guia por problema, classes, vereditos, pipeline, figuras |
 | [10-decisoes-e-riscos.md](10-decisoes-e-riscos.md) | ADRs, questões em aberto, riscos |
 | [14-resposta-as-criticas.md](14-resposta-as-criticas.md) | Cada crítica recebida e onde foi resolvida |
+| [15-adaptacao-perfis-e-colab.md](15-adaptacao-perfis-e-colab.md) | Avaliação por perfil (grande × pequena empresa), cenários adaptados e protocolo econômico no Colab |
+| [16-seletor-por-metricas.md](16-seletor-por-metricas.md) | Seletor prático por 7 métricas (inclusive aplicações híbridas com múltiplos métodos) |

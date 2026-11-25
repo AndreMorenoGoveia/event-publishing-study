@@ -63,6 +63,7 @@ Ordem de leitura: 00 → 11 → 12 → 13 → 03 → 05 → 06 → 04 → 07 →
 | 09 | [Análise e guia](docs/09-analise-e-guia.md) | Guia por problema, classes, vereditos, pipeline, figuras |
 | 10 | [Decisões e riscos](docs/10-decisoes-e-riscos.md) | ADRs, questões abertas, riscos, congelamento |
 | 14 | [Resposta às críticas](docs/14-resposta-as-criticas.md) | O que mudou e onde |
+| 15 | [Adaptação por perfil e Colab](docs/15-adaptacao-perfis-e-colab.md) | Validade para grande × pequena empresa, cenários A-S1/A-E1/A-E2/A-F1 e protocolo econômico no Colab |
 
 ## Stack
 

@@ -1,0 +1,25 @@
+[colab] Creating session 'run-c99a69'...
+[colab] Session READY (run-c99a69). Executing experiments/colab_wave3/run_enterprise_gaps.py...
+[17:44:37] Wave 3A bootstrap done in 372.1s
+[17:44:37] === N20: TLS & Serialization Overhead ===
+[17:44:38]   N20 tls=False fmt=binary   : bytes=918.0 p50=0.407ms p99=0.894ms tps=2252.3
+[17:44:38]   N20 tls=False fmt=json     : bytes=918.0 p50=0.332ms p99=0.759ms tps=2686.8
+[17:44:39]   N20 tls=False fmt=json_zlib: bytes=342.0 p50=0.403ms p99=0.812ms tps=2267.6
+WARNING:asyncio:returning true from eof_received() has no effect when using ssl
+[17:44:39]   N20 tls=True fmt=binary   : bytes=918.0 p50=0.379ms p99=0.801ms tps=2350.9
+WARNING:asyncio:returning true from eof_received() has no effect when using ssl
+[17:44:40]   N20 tls=True fmt=json     : bytes=918.0 p50=0.406ms p99=0.837ms tps=2208.3
+WARNING:asyncio:returning true from eof_received() has no effect when using ssl
+[17:44:40]   N20 tls=True fmt=json_zlib: bytes=342.0 p50=0.427ms p99=0.912ms tps=2142.9
+[17:44:40] === N21: Poison Pill / Head-of-Line Blocking (Kafka O1 vs RabbitMQ DLQ) ===
+/tmp/ipykernel_1426/4199814367.py:224: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1426/4199814367.py:241: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  cn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[17:44:45]   N21 done: {'poison_pills': 6, 'kafka_strict_O1_hol': {'healthy_p50_ms': 3911.2, 'healthy_p99_ms': 4364.2, 'dlq_count': 6}, 'rabbitmq_dlq_parallel': {'healthy_p50_ms': 92.7, 'healthy_p99_ms': 147.9, 'dlq_count': 6}}
+[17:44:45] === N19: Multi-Tenant / Noisy Neighbor (1, 4, 8 services on SAME PostgreSQL) ===
+[17:44:51]   N19 services=1: target_p50=3.67ms target_p99=4.69ms cluster_tps=98.5
+[17:44:58]   N19 services=4: target_p50=4.09ms target_p99=6.79ms cluster_tps=799.2
+[17:45:04]   N19 services=8: target_p50=4.06ms target_p99=6.36ms cluster_tps=1761.2
+[colab] Stopping session 'run-c99a69'...
+[colab] Session terminated.

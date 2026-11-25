@@ -1,0 +1,80 @@
+[colab] Creating session 'run-04edeb'...
+[colab] Session READY (run-04edeb). Executing experiments/colab_slice/run_study.py...
+[00:15:58] Installing system packages (postgresql, rabbitmq-server) and Python deps...
+[00:15:58] $ apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib rabbitmq-server
+[00:16:36] $ /usr/bin/python3 -m pip install -q psycopg2-binary pika numpy
+[00:16:39] $ ls /etc/postgresql | sort -V | tail -n 1
+[00:16:39] $ service postgresql restart
+[00:16:41] $ su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'postgres' SUPERUSER REPLICATION;\""
+[00:16:41] $ su - postgres -c "psql -c \"CREATE DATABASE study;\""
+[00:16:41] $ service rabbitmq-server start
+[00:16:49] $ rabbitmqctl status
+[00:16:50] Bootstrap completed in 51.7s (PG 16, CPUs=2)
+[00:16:50] === Running Block 1: A-F1 Deterministic Fault Stories ===
+/tmp/ipykernel_1069/707127039.py:196: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1069/707127039.py:272: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  rmq = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1069/707127039.py:229: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1069/707127039.py:328: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  rmq = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1069/707127039.py:375: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  rmq = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1069/707127039.py:413: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  rmq = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[00:16:53] Block 1 done: {"H-A_no_fencing_rabbitmq": {"versions_sequence": [1, 2, 1], "db_mark_blocked": false, "redelivery_inversions": 1, "broker_fencing_available": false, "confirms_P6_db_fencing_alone_insufficient": true}, "H-A_with_db_fencing_rabbitmq": {"versions_sequence": [1, 2, 1], "db_mark_blocked": true, "redelivery_inversions": 1, "broker_fencing_available": false, "confirms_P6_db_fencing_alone_insufficient": true}, "H-B_outbox_crash_post_ack": {"expected": 1, "delivered_unique": 1, "total_deliveries": 2, "lost": 0, "duplicates": 1}, "H-C_dw_after_crash": {"expected_in_db": 1, "delivered_unique": 0, "lost_confirmed": 1}, "H-D_dw_before_rollback": {"expected_in_db": 0, "delivered_unique": 1, "ghost_events": 1}, "H-J_cleanup_timing": {"early": {"expected": 1, "delivered": 0, "lost_confirmed": 1}, "after_ack": {"expected": 1, "delivered": 1, "lost_confirmed": 0}}}
+[00:16:53] === Running Block 2: A-S1 Small Company Profile (10 & 50 ev/s) ===
+[00:17:01]   A-S1 rate=10 tx-only(p=0): L_req p99=11.517ms, L_e2e p99=Nonems, deliv=80/80
+/tmp/ipykernel_1069/707127039.py:490: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  conn = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+/tmp/ipykernel_1069/707127039.py:659: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  rmq = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[00:17:10]   A-S1 rate=10 dw-after(p=0): L_req p99=18.939ms, L_e2e p99=19.314ms, deliv=80/80
+[00:17:18]   A-S1 rate=10 pg-queue(p=0): L_req p99=27.559ms, L_e2e p99=34.585ms, deliv=80/80
+/tmp/ipykernel_1069/707127039.py:560: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  rmq = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[00:17:27]   A-S1 rate=10 outbox-poll(p=100): L_req p99=11.323ms, L_e2e p99=113.646ms, deliv=80/80
+[00:17:36]   A-S1 rate=10 outbox-poll(p=1000): L_req p99=10.961ms, L_e2e p99=985.921ms, deliv=80/80
+[00:17:45]   A-S1 rate=10 outbox-notify(p=0): L_req p99=11.541ms, L_e2e p99=26.844ms, deliv=80/80
+/tmp/ipykernel_1069/707127039.py:619: DeprecationWarning: BlockingConnection is deprecated and will be removed in Pika 2.0. Use Connection instead, which runs its own IOLoop on a background thread and provides a thread-safe blocking API that does not stall heartbeats on slow message processing. See https://pika.github.io/pika/latest/modules/adapters/thread_safe/
+  rmq = pika.BlockingConnection(pika.ConnectionParameters("127.0.0.1"))
+[00:17:53]   A-S1 rate=10 outbox-cdc(p=0): L_req p99=14.21ms, L_e2e p99=21.156ms, deliv=80/80
+[00:18:02]   A-S1 rate=50 tx-only(p=0): L_req p99=6.523ms, L_e2e p99=Nonems, deliv=400/400
+[00:18:10]   A-S1 rate=50 dw-after(p=0): L_req p99=12.989ms, L_e2e p99=13.116ms, deliv=400/400
+[00:18:19]   A-S1 rate=50 pg-queue(p=0): L_req p99=8.047ms, L_e2e p99=17.242ms, deliv=400/400
+[00:18:27]   A-S1 rate=50 outbox-poll(p=100): L_req p99=12.566ms, L_e2e p99=110.921ms, deliv=400/400
+[00:18:37]   A-S1 rate=50 outbox-poll(p=1000): L_req p99=7.528ms, L_e2e p99=1001.415ms, deliv=400/400
+[00:18:46]   A-S1 rate=50 outbox-notify(p=0): L_req p99=11.118ms, L_e2e p99=25.459ms, deliv=400/400
+[00:18:54]   A-S1 rate=50 outbox-cdc(p=0): L_req p99=17.243ms, L_e2e p99=49.539ms, deliv=400/400
+[00:18:54] === Running Block 3: A-E1 Enterprise Frontier (Representative Workload) ===
+[00:19:03]   A-E1 rate=25 outbox-poll(p=10): L_req p99=9.426ms, L_e2e p99=24.377ms, cens=0, O1_viol=0
+[00:19:12]   A-E1 rate=25 outbox-poll(p=100): L_req p99=10.675ms, L_e2e p99=112.641ms, cens=0, O1_viol=0
+[00:19:20]   A-E1 rate=25 outbox-notify(p=0): L_req p99=16.339ms, L_e2e p99=22.097ms, cens=0, O1_viol=0
+[00:19:29]   A-E1 rate=25 outbox-cdc(p=0): L_req p99=7.413ms, L_e2e p99=13.477ms, cens=0, O1_viol=0
+[00:19:37]   A-E1 rate=25 pg-queue(p=0): L_req p99=9.394ms, L_e2e p99=16.237ms, cens=0, O1_viol=0
+[00:19:46]   A-E1 rate=100 outbox-poll(p=10): L_req p99=9.764ms, L_e2e p99=38.099ms, cens=0, O1_viol=0
+[00:19:54]   A-E1 rate=100 outbox-poll(p=100): L_req p99=10.169ms, L_e2e p99=111.83ms, cens=0, O1_viol=0
+[00:20:03]   A-E1 rate=100 outbox-notify(p=0): L_req p99=39.203ms, L_e2e p99=114.558ms, cens=0, O1_viol=0
+[00:20:12]   A-E1 rate=100 outbox-cdc(p=0): L_req p99=9.363ms, L_e2e p99=21.025ms, cens=0, O1_viol=0
+[00:20:20]   A-E1 rate=100 pg-queue(p=0): L_req p99=8.375ms, L_e2e p99=17.941ms, cens=0, O1_viol=0
+[00:20:35]   A-E1 rate=300 outbox-poll(p=10): L_req p99=96.404ms, L_e2e p99=6608.837ms, cens=163, O1_viol=0
+[00:20:50]   A-E1 rate=300 outbox-poll(p=100): L_req p99=75.227ms, L_e2e p99=6733.843ms, cens=164, O1_viol=0
+[00:21:05]   A-E1 rate=300 outbox-notify(p=0): L_req p99=141.024ms, L_e2e p99=6732.319ms, cens=161, O1_viol=0
+[00:21:19]   A-E1 rate=300 outbox-cdc(p=0): L_req p99=48.146ms, L_e2e p99=6877.684ms, cens=209, O1_viol=0
+[00:21:28]   A-E1 rate=300 pg-queue(p=0): L_req p99=26.19ms, L_e2e p99=34.573ms, cens=0, O1_viol=6
+[00:21:44]   A-E1 rate=600 outbox-poll(p=10): L_req p99=1716.704ms, L_e2e p99=11707.819ms, cens=2356, O1_viol=0
+[00:22:01]   A-E1 rate=600 outbox-poll(p=100): L_req p99=1675.142ms, L_e2e p99=11778.689ms, cens=2437, O1_viol=0
+[00:22:20]   A-E1 rate=600 outbox-notify(p=0): L_req p99=4242.09ms, L_e2e p99=13597.483ms, cens=1877, O1_viol=0
+[00:22:36]   A-E1 rate=600 outbox-cdc(p=0): L_req p99=1712.611ms, L_e2e p99=12046.174ms, cens=2490, O1_viol=0
+[00:22:46]   A-E1 rate=600 pg-queue(p=0): L_req p99=1059.354ms, L_e2e p99=1065.931ms, cens=0, O1_viol=6
+[00:22:46] === Running Block 4: A-E2 NOTIFY Contention Ablation (P3) ===
+[00:22:51]   A-E2 c=4 outbox-poll: 988.0 tx/s
+[00:22:56]   A-E2 c=4 outbox-notify: 594.5 tx/s
+[00:23:01]   A-E2 c=16 outbox-poll: 1024.1 tx/s
+[00:23:06]   A-E2 c=16 outbox-notify: 609.5 tx/s
+[00:23:11]   A-E2 c=32 outbox-poll: 992.3 tx/s
+[00:23:16]   A-E2 c=32 outbox-notify: 507.3 tx/s
+[00:23:16] All blocks completed in 438.2s
+[colab] Stopping session 'run-04edeb'...
+[colab] Session terminated.
